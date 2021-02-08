@@ -37,7 +37,10 @@
         "laravel": {
             "providers": [
                 "JeroenvanRensen\\ShareLinks\\ShareLinksServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Share": "JeroenvanRensen\\ShareLinks\\ShareFacade"
+            }
         }
     }
 }
