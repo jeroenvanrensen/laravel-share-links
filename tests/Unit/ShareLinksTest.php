@@ -2,7 +2,7 @@
 
 namespace JeroenvanRensen\ShareLinks\Tests\Unit;
 
-use JeroenvanRensen\ShareLinks\ShareFacade;
+use JeroenvanRensen\ShareLinks\Share;
 use JeroenvanRensen\ShareLinks\Tests\TestCase;
 
 class ShareLinksTest extends TestCase
@@ -15,7 +15,7 @@ class ShareLinksTest extends TestCase
     {
         $this->withoutExceptionHandling();
         
-        $this->assertEquals($url, ShareFacade::page('Post Title', 'http://example.org')->$medium());
+        $this->assertEquals($url, Share::page('Post Title', 'http://example.org')->$medium());
     }
 
     public function shareLinksProvider()
@@ -41,7 +41,7 @@ class ShareLinksTest extends TestCase
     {
         $this->withoutExceptionHandling();
         
-        $this->assertEquals($url, ShareFacade::page('Other Post Title', 'http://example.com')->$medium());
+        $this->assertEquals($url, Share::page('Other Post Title', 'http://example.com')->$medium());
     }
 
     public function otherShareLinksProvider()
@@ -66,13 +66,13 @@ class ShareLinksTest extends TestCase
         
         $this->assertEquals(
             'https://pinterest.com/pin/create/button/?url=http://example.org&media=https://via.placeholder.com/400&description=Post%20Title',
-            ShareFacade::page('Post Title', 'http://example.org')->pinterest('https://via.placeholder.com/400')
+            Share::page('Post Title', 'http://example.org')->pinterest('https://via.placeholder.com/400')
         );
         
         // Other title, url and image
         $this->assertEquals(
             'https://pinterest.com/pin/create/button/?url=http://example.com&media=https://via.placeholder.com/300&description=Other%20Post%20Title',
-            ShareFacade::page('Other Post Title', 'http://example.com')->pinterest('https://via.placeholder.com/300')
+            Share::page('Other Post Title', 'http://example.com')->pinterest('https://via.placeholder.com/300')
         );
     }
 }

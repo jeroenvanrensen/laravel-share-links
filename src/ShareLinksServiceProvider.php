@@ -14,7 +14,7 @@ class ShareLinksServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('share', function($app) {
-            return new Share();
+            return new ShareFacade();
         });
     }
 }
